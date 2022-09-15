@@ -10,4 +10,4 @@ RUN yarn build
 
 FROM nginx:latest
 COPY --from=build /usr/local/app/dist /usr/share/nginx/html
-COPY .nginx/nginx.conf /etc/nginx/conf.d/default.conf
+# COPY .nginx/nginx.conf /etc/nginx/conf.d/default.conf
