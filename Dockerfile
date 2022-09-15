@@ -5,9 +5,9 @@ WORKDIR /usr/local/app
 
 # Add the source code to app
 COPY ./ /usr/local/app/
-RUN npm install
-RUN npm run build
+RUN yarn install
+RUN yarn build
 
 FROM nginx:latest
 COPY --from=build /usr/local/app/dist /usr/share/nginx/html
-
+COPY .nginx/nginx.conf /etc/nginx/conf.d/default.conf
