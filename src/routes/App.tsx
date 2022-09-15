@@ -1,11 +1,10 @@
-import { useState } from 'react'
-// import logo from '../static/images/logo/logo.svg'
+import logo from '../static/images/logo/logo.svg'
 import './App.scss'
 
 export const App: React.FC = () => (
   <div className="App">
     <header className="App-header">
-      <img src="../static/images/logo/logo.svg" className="App-logo" alt="logo" />
+      <img src={logo} className="App-logo" alt="logo" />
       <p>Hello, world!</p>
       <p>
         Edit <code>App.tsx</code> and save to test HMR updates.
