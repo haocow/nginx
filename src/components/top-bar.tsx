@@ -1,8 +1,8 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { HAO_PALETTE } from "../styles/colors";
 import logo from "../static/images/logo/logo.svg";
 import AppBar from '@mui/material/AppBar';
-import Link from '@mui/material/Link';
 import Toolbar from '@mui/material/Toolbar';
 
 const navMenuItems = [
@@ -37,13 +37,13 @@ export const TopBar: React.FC = () => {
 const TopBarNavMenu = () => {
     return (
         <>
-            {navMenuItems.map(item => (<Link style={linkStyle} href={item.href}>{item.name}</Link>))}
+            {navMenuItems.map(item => (<Link style={linkStyle} to={item.href}>{item.name}</Link>))}
         </>
     );
 }
 
 const TopBarLogo = () => (
-    <Link href='/'>
+    <Link to='/'>
         <StyledTopBarLogoImg alt="logo" src={logo} />
     </Link>    
 );
