@@ -1,19 +1,21 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { App } from "./routes/App";
+import { Home } from "./routes/home/Home";
 import { NotFound } from "./routes/NotFound";
-// import { Plateses } from "./components/pages/Plateses";
+import { Plateses } from "./routes/plateses/Plateses";
 import { TopBar } from "./components/top-bar";
 
 export const AppRouter: React.FC = () => {
     return (
         <>
             <TopBar />
-            <Routes>
-                <Route path="/" element={ <App /> } />
-                {/* <Route path="/plateses" element={<Plateses />} /> */}
-                <Route path="/*" element={ <NotFound /> } />
-            </Routes>
+            <main>
+                <Routes>
+                    <Route path="/" element={ <Home /> } />
+                    <Route path="/plateses" element={ <Plateses /> } />
+                    <Route path="/*" element={ <NotFound /> } />
+                </Routes>
+            </main>
         </>
     );
 }

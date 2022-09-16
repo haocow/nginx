@@ -1,17 +1,17 @@
-import logo from '../static/images/logo/logo.svg'
-import './App.scss'
+import logo from '../../static/images/logo/logo.svg'
+import './Home.scss'
 
-export const App: React.FC = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
+export const Home: React.FC = () => (
+  <div className="Home">
+    <header className="Home-header">
+      <img src={logo} className="Home-logo" alt="logo" />
       <p>Hello, world!</p>
       <p>
-        Edit <code>App.tsx</code> and save to test HMR updates.
+        Edit <code>Home.tsx</code> and save to test HMR updates.
       </p>
       <p>
         <a
-          className="App-link"
+          className="Home-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
@@ -20,7 +20,7 @@ export const App: React.FC = () => (
         </a>
         {' | '}
         <a
-          className="App-link"
+          className="Home-link"
           href="https://vitejs.dev/guide/features.html"
           target="_blank"
           rel="noopener noreferrer"
