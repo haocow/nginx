@@ -17,12 +17,6 @@ const toolbarStyle = {
     gap: 24,
 }
 
-const linkStyle = {
-    color: HAO_PALETTE.WHITE,
-    fontWeight: "bold",
-    textDecoration: "none",
-}
-
 export const TopBar: React.FC = () => {
     return (
         <AppBar position="relative" style={topBarStyle}>
@@ -37,7 +31,7 @@ export const TopBar: React.FC = () => {
 const TopBarNavMenu = () => {
     return (
         <>
-            {navMenuItems.map(item => (<Link style={linkStyle} to={item.href}>{item.name}</Link>))}
+            {navMenuItems.map(item => (<StyledLink to={item.href}>{item.name}</StyledLink>))}
         </>
     );
 }
@@ -52,3 +46,9 @@ const StyledTopBarLogoImg = styled.img`
     height: 36px;
     margin: 12px;
 `;
+
+const StyledLink = styled(Link)`
+    color: ${HAO_PALETTE.WHITE};
+    font-weight: bold;
+    text-decoration: none;
+`
