@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
+import { styled as muiStyled } from '@mui/material/styles';
+import { withStyles } from '@mui/material';
+import Button, { ButtonProps } from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
+import FormGroup from '@mui/material/FormGroup';
+import InputBase from '@mui/material/InputBase';
 import TableContainer from '@mui/material/TableContainer';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -17,6 +22,7 @@ import PlatesesTableRow, { getUpdatedShares } from './subcomponents/PlatesesTabl
 import TaxInput from './subcomponents/tax-input';
 import { Diner, Item } from './interfaces';
 
+import { HAO_PALETTE } from '../../styles/colors';
 import './PlatesesPage.scss';
 
 const DEFAULT_TAX = toDecimal(TAX_RATE_NY);
@@ -40,20 +46,24 @@ export const Plateses: React.FC = () => {
     setDinerText(e.target.value);
   }
 
+  const addDiner = () => {
+    if (dinerText && isNewDiner(dinerText)) {
+      setDiners(diners.concat({ name: dinerText }));
+      setDinerText('');
+    } else {
+      if (!dinerText) {
+        setDinerTextErrorMsg('Name must not be empty');
+      } else if (!isNewDiner(dinerText)) {
+        setDinerTextErrorMsg('Name already exists');
+      } else {
+        setDinerTextErrorMsg('Unknown error');
+      }
+    }
+  }
+
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.keyCode === ENTER_KEY_CODE) {
-      if (dinerText && isNewDiner(dinerText)) {
-        setDiners(diners.concat({ name: dinerText }));
-        setDinerText('');
-      } else {
-        if (!dinerText) {
-          setDinerTextErrorMsg('Name must not be empty');
-        } else if (!isNewDiner(dinerText)) {
-          setDinerTextErrorMsg('Name already exists');
-        } else {
-          setDinerTextErrorMsg('Unknown error');
-        }
-      }
+      addDiner();
     }
   }
 
@@ -93,17 +103,42 @@ export const Plateses: React.FC = () => {
     setDiners(diners.filter((diner) => diner.name !== chipToDelete.name )); // remove name from diners list
   }
 
+  // const SubmitButton = muiStyled(Button)<ButtonProps>(({ theme }) => ({
+  //   color: theme.palette.success.secondary,
+  // }));
+  const SubmitButton = () => (
+    <Button
+      disableElevation
+      onClick={addDiner}
+      style={{
+        padding: 0,
+        backgroundColor: HAO_PALETTE.AMBER,
+      }}
+      variant='contained'
+    >
+      Submit
+    </Button>
+  );
+
   const getDinersBar = () => {
     return (
       <StyledUsersInputDiv>
         <TextField
+          InputProps={{
+            endAdornment: (<SubmitButton />)
+          }}
           error={isSome(dinerTextErrorMsg)}
           helperText={dinerTextErrorMsg}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => onDinerNameChange(e) }
           onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => onKeyDown(e)}
           placeholder='Diner name...'
+          style={{
+            borderTopRightRadius: 0,
+            borderBottomRightRadius: 0,
+          }}
           value={dinerText}
-          size="small"
+          variant='outlined'
+          size='small'
         />
         <StyledUsersChipsDiv>
           {diners.map((chip) => {
