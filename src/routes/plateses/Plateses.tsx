@@ -135,6 +135,7 @@ export const Plateses: React.FC = () => {
           style={{
             borderTopRightRadius: 0,
             borderBottomRightRadius: 0,
+            minWidth: 260,
           }}
           value={dinerText}
           variant='outlined'
