@@ -105,8 +105,6 @@ const PlatesesTableRow: React.FC<ITableRowProps> = ({ amount, checked, diners, i
     return diners.find(diner => selected.has(diner.name));
   }
 
-  console.log("ASDF");
-
   return (
     <TableRow key={id}>
       <TableCell className='input item-name-col'>

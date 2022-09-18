@@ -3,8 +3,9 @@ import Toolbar from '@mui/material/Toolbar';
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import logo from "../static/images/logo/logo.svg";
-import { HAO_PALETTE } from "../styles/colors";
+import logo from '../static/images/logo/logo.svg';
+import { HAO_PALETTE } from '../styles/colors';
+import { UserMenu } from './user-menu';
 
 const navMenuItems = [
     { name: "Plateses", href: "/plateses"},
@@ -24,6 +25,7 @@ export const TopBar: React.FC = () => {
             <Toolbar style={toolbarStyle}>
                 <TopBarLogo />
                 <TopBarNavMenu />
+                <StyledUserMenu />
             </Toolbar>
         </AppBar>
     );
@@ -52,4 +54,8 @@ const StyledLink = styled(Link)`
     color: ${HAO_PALETTE.WHITE};
     font-weight: bold;
     text-decoration: none;
+`
+
+const StyledUserMenu = styled(UserMenu)`
+    margin-left: auto;
 `
