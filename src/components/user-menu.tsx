@@ -1,8 +1,5 @@
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import Select from '@mui/material/Select';
+import Avatar from '@mui/material/Avatar';
 import React from 'react'
-import styled from 'styled-components'
 import defaultPicture from '../static/images/emptyProfilePicture.png';
 import { Dropdown } from './dropdown';
 
@@ -11,7 +8,7 @@ interface UserMenuProps {
 }
 
 export const UserMenu: React.FC<UserMenuProps> = ({ className }) => {
-    const items = ["Profile", "Logout"];
+    const items = ["Profile", "Logout", "Third option?"];
     return (
         <Dropdown 
             className={className}
@@ -19,12 +16,7 @@ export const UserMenu: React.FC<UserMenuProps> = ({ className }) => {
             onItemSelect={(item) => {console.log("user-menu onItemSelect", item)}}
             selectedItem={null}
         >
-            <ProfilePicture src={defaultPicture} />
+            <Avatar src={defaultPicture} />
         </Dropdown>
     );
 }
-
-const ProfilePicture = styled.img`
-    border-radius: 50%;
-    width: 36px;
-`;

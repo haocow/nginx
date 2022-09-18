@@ -319,6 +319,7 @@ export const Plateses: React.FC = () => {
         {diners.map(diner =>
           <TableCell
             className='totals-row diner-total'
+            key={diner.name}
           >
             {renderCurrency(dinerSubtotals[diner.name] + dinerTaxes[diner.name] + dinerTips[diner.name])}
           </TableCell>

@@ -1,4 +1,4 @@
-import { Menu } from '@mui/material'
+import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import React, { useState } from 'react'
 import { Maybe } from '../types/maybe'
@@ -18,18 +18,14 @@ export const Dropdown = <T,>({
     onItemSelect,
 }: React.PropsWithChildren<DropdownProps<T>>): JSX.Element => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
     const open = Boolean(anchorEl);
-
     const handleClickChildren = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
-
     const handleMenuItemClick = (index: number, item: T) => {
         onItemSelect(item);
         setAnchorEl(null);
     };
-
     const handleClose = () => {
         setAnchorEl(null);
     };
@@ -41,7 +37,9 @@ export const Dropdown = <T,>({
             </div>
             <Menu
                 anchorEl={anchorEl}
-                id={'dropdown-menu'}
+                disableAutoFocusItem
+                id='dropdown-menu'
+                onClick={handleClose}
                 onClose={handleClose}
                 open={open}
             >
