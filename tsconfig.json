@@ -9,13 +9,18 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    // "noEmit": true,
+    "jsx": "react-jsx",
+    "paths": {
+      "common/*": ["./common/src/*"],
+      "*": ["./src/*"],
+    }
   },
-  "include": ["src"],
+  "include": ["src", "common/src"],
+  "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

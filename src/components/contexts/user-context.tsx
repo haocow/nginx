@@ -1,6 +1,6 @@
 import React from 'react'
-import { Maybe } from '../../types/maybe'
-import { User } from '../../types/user'
+import { Maybe } from 'common/types/maybe'
+import { User } from 'common/types/user'
 
 interface IContext {
     userDisplayName: Maybe<string>;

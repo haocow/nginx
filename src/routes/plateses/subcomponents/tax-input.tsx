@@ -1,6 +1,6 @@
-import React from 'react';
 import TextField  from '@mui/material/TextField';
-import { TAX_RATE_NY } from '../../../constants/constants';
+import { TAX_RATE_NY } from 'common/constants/constants';
+import React from 'react';
 import { renderPercentage, toDecimal } from '../../../utils/percentages';
 
 interface TaxInputProps {

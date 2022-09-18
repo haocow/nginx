@@ -1,7 +1,7 @@
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
+import { Maybe } from 'common/types/maybe'
 import React, { useState } from 'react'
-import { Maybe } from '../types/maybe'
 
 export interface DropdownProps<T> {
     children?: Maybe<any>;

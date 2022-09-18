@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
-import { styled as muiStyled } from '@mui/material/styles';
-import { withStyles } from '@mui/material';
-import Button, { ButtonProps } from '@mui/material/Button';
+import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
-import FormGroup from '@mui/material/FormGroup';
-import InputBase from '@mui/material/InputBase';
 import TableContainer from '@mui/material/TableContainer';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -13,8 +9,8 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TextField from '@mui/material/TextField';
-import { DECIMAL, DEFAULT_TIP_PCT, ENTER_KEY_CODE, PERCENTAGE, TAX_RATE_NY, FinancialTypes } from '../../constants/constants';
-import { Maybe, isSome } from '../../types/maybe';
+import { DECIMAL, DEFAULT_TIP_PCT, ENTER_KEY_CODE, PERCENTAGE, TAX_RATE_NY, FinancialTypes } from 'common/constants/constants';
+import { Maybe, isSome } from 'common/types/maybe';
 import { getCurrency, renderCurrency } from '../../utils/currency';
 import { toDecimal } from '../../utils/percentages';
 
