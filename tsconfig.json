@@ -15,12 +15,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "paths": {
-      "common/*": ["./common/src/*"],
-      "*": ["./src/*"],
-    }
   },
-  "include": ["src", "common/src"],
-  "exclude": ["node_modules"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["web/client/src", "common/src"],
+  "exclude": ["node_modules"]
 }
