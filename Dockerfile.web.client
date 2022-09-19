@@ -1,21 +1,16 @@
 FROM node:latest as build
 
 # Set the working directory
-WORKDIR /usr/local/app
+WORKDIR /app/web/client
 
 # Build dependencies
-COPY ./web/client/package.json /usr/local/app
+COPY ./tsconfig.json /app
+COPY ./common /app/common
+COPY ./web/client /app/web/client
 RUN yarn install
-
-# Add the source code to app
-COPY ./tsconfig.json /usr/local/app
-COPY ./common /usr/local/app/common
-COPY ./web/client /usr/local/app/web/client
-
-# Build app
-WORKDIR /usr/local/app/web/client
 RUN yarn build
 
+# Use custom nginx.conf
 FROM nginx:latest
-COPY --from=build /usr/local/app/web/client/dist /usr/share/nginx/html
+COPY --from=build /app/web/client/dist /usr/share/nginx/html
 COPY web/client/.nginx/nginx.conf /etc/nginx/conf.d/default.conf
