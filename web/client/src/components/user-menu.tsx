@@ -1,5 +1,7 @@
 import Avatar from '@mui/material/Avatar';
 import React from 'react'
+import { Link } from "react-router-dom";
+import styled from 'styled-components';
 import defaultPicture from '../static/images/emptyProfilePicture.png';
 import { Dropdown } from './dropdown';
 
@@ -8,7 +10,11 @@ interface UserMenuProps {
 }
 
 export const UserMenu: React.FC<UserMenuProps> = ({ className }) => {
-    const items = ["Profile", "Logout", "Third option?"];
+    const items = [
+        <StyledLink to="/profile">Profile</StyledLink>,
+        <StyledLink to="/login">Login</StyledLink>,
+        <StyledLink to="/logout">Logout</StyledLink>,
+    ];
     return (
         <Dropdown 
             className={className}
@@ -20,3 +26,8 @@ export const UserMenu: React.FC<UserMenuProps> = ({ className }) => {
         </Dropdown>
     );
 }
+
+const StyledLink = styled(Link)`
+    color: black;
+    text-decoration: none;
+`;
