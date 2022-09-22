@@ -1,5 +1,6 @@
-import Button from '@mui/material/Button';
+import Button from '@mui/material/Button'
 import { Maybe } from 'common/types/maybe'
+import React from 'react';
 import { Link } from 'react-router-dom'
 import { FieldError, useWatch } from 'react-hook-form'
 import {
@@ -23,13 +24,13 @@ interface SubmitButtonProps {
 }
 
 const SubmitButton = ({ children, style }: SubmitButtonProps) => {
-    const [email] = useWatch({
-        name: ['email']
+    const [email, firstName, lastName] = useWatch({
+        name: ['email', 'first-name', 'last-name']
     })
-    console.log('login', email)
+    console.log('register', email, firstName, lastName)
     return (
         <Button
-            disabled={!(email)}
+            disabled={!(email && firstName && lastName)}
             style={style}
             type='submit'
             variant='contained'
@@ -39,11 +40,7 @@ const SubmitButton = ({ children, style }: SubmitButtonProps) => {
     )
 }
 
-export const Login: React.FC = () => {
-    const form = {
-        agree: false
-    }
-
+export const Register: React.FC = () => {
     return (
         <StyledApplicationDiv>
             <FormContainer
@@ -54,7 +51,7 @@ export const Login: React.FC = () => {
                         flexDirection: 'column',
                     },
                 }}
-                defaultValues={form}
+                defaultValues={{}}
                 onSuccess={() => {console.log('submit?')}}
             >
                 <TextFieldElement
@@ -66,6 +63,20 @@ export const Login: React.FC = () => {
                     parseError={parseError}
                     type='email'
                 />
+                <TextFieldElement
+                    fullWidth
+                    required
+                    label='First Name'
+                    margin='dense'
+                    name='first-name'
+                />
+                <TextFieldElement
+                    fullWidth
+                    required
+                    label='Last Name'
+                    margin='dense'
+                    name='last-name'
+                />
                 <PasswordElement
                     fullWidth
                     required
@@ -76,8 +87,8 @@ export const Login: React.FC = () => {
                 <SubmitButton style={{ marginTop: '16px' }}>Login</SubmitButton>
             </FormContainer>
             <div>
-                <span>Don't have an account? </span>
-                <StyledLink to='/register'>Register</StyledLink>
+                <span>Already have an account? </span>
+                <StyledLink to='/login'>Login</StyledLink>
             </div>
         </StyledApplicationDiv>
     );
